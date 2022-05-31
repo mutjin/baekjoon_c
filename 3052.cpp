@@ -17,19 +17,23 @@
 #include <stdio.h>
 int main(void){
     int arr[10];
-    int leftarr[10];
+    int left[10];
     for(int i=0;i<10;i++){
         scanf("%d",&arr[i]);
-        leftarr[i]=arr[i]%42;
+        left[i]=arr[i]%42;
+    }
+    
+    int check[42]={0};
+    for(int i=0;i<10;i++){
+        check[left[i]]++;
     }
     
     int count=0;
-    int cmp=leftarr[0];
-    for(int i=1;i<10;i++){
-        if(cmp!=leftarr[i]){
-            cmp=leftarr[i];
+    for(int i=0;i<42;i++){
+        if(check[i]!=0){
             count++;
         }
     }
-    printf("%d\n",count);
+    
+    printf("%d",count);
 }
