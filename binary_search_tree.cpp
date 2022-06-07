@@ -1,102 +1,102 @@
-////ÀÌÁøÅ½»öÆ®¸®
-//#include <stdio.h>
-//#include <stdlib.h>
-//
-//#define MAX(a,b) (a>b?a:b)
-//
-////³ëµå ±¸Á¶Ã¼
-//typedef struct TreeNode {
-//	int key;
-//	struct TreeNode* left, * right;
-//}TreeNode;
-//
-////³ëµå »ı¼º ÇÔ¼ö
-//TreeNode* createNode(int key) {
-//	TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
-//	node->key = key;
-//	node->left = node->right = NULL; //»ı¼ºµÇ´Â ³ëµå´Â ´Ü¸»³ëµåÀÌ´Ù
-//
-//	return node;
-//}
-//
-////³ëµå »ğÀÔ ÇÔ¼ö
-//TreeNode* insert(TreeNode* node, int key) {
-//	if (node == NULL) {
-//		return createNode(key);
-//	}
-//
-//	if (key < node->key) {
-//		node->left = insert(node->left, key);
-//	}
-//	else if (key > node->key) {
-//		node->right = insert(node->right, key);
-//	}
-//	else {
-//		return node;
-//	}
-//	return node;
-//}
-//
-////ÀüÀ§ ¼øÈ¸ ÇÔ¼ö
-//void preOrder(TreeNode* root) {
-//	if (root != NULL) {
-//		printf("[%d] ", root->key);
-//		preOrder(root->left);
-//		preOrder(root->right);
-//	}
-//}
-//
-////ÁßÀ§ ¼øÈ¸ ÇÔ¼ö
-//void inOrder(TreeNode* root) {
-//	if (root != NULL) {
-//		inOrder(root->left);
-//		printf("[%d] ", root->key);
-//		inOrder(root->right);
-//	}
-//}
-//
-////ÀÌÁø Å½»ö ÇÔ¼ö
-//TreeNode* searchNode(TreeNode* node, int key) {
-//	
-//	if (node == NULL) { //Å½»ö¿¡ ½ÇÆĞÇÏ´Â °æ¿ì
-//		return NULL;
-//	}
-//
-//
-//	if (key == node->key) { //Å½»ö¿¡ ¼º°øÇÏ´Â °æ¿ì
-//		return node;
-//	}
-//	else if (key > node->key) { //¿À¸¥ÂÊ ¼­ºêÆ®¸®·Î ÀÌµ¿
-//		return searchNode(node->right, key);
-//	}
-//	else { //¿ŞÂÊ ¼­ºêÆ®¸®·Î ÀÌµ¿
-//		return searchNode(node->left, key);
-//	}
-//}
-//
-//int main(void) {
-//	TreeNode* root = NULL;
-//
-//	root = insert(root, 35);
-//	root = insert(root, 68);
-//	root = insert(root, 35);
-//	//inOrder(root); printf("\n"); getchar(); //ÀüÀ§¼øÈ¸
-//
-//	root = insert(root, 22);
-//	root = insert(root, 17);
-//	root = insert(root, 55);
-//	//inOrder(root); printf("\n"); getchar(); //ÀüÀ§¼øÈ¸
-//
-//	root = insert(root, 30);
-//	root = insert(root, 34);
-//	root = insert(root, 65);
-//	inOrder(root); printf("\n"); getchar(); //ÀüÀ§¼øÈ¸
-//
-//	//ÀÌÁøÅ½»ö
-//	if (searchNode(root, 30)) {
-//		printf("found\n");
-//	}
-//	else {
-//		printf("not found\n");
-//	}
-//}
+//ì´ì§„íƒìƒ‰íŠ¸ë¦¬
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX(a,b) (a>b?a:b)
+
+//ë…¸ë“œ êµ¬ì¡°ì²´
+typedef struct TreeNode {
+	int key;
+	struct TreeNode* left, * right;
+}TreeNode;
+
+//ë…¸ë“œ ìƒì„± í•¨ìˆ˜
+TreeNode* createNode(int key) {
+	TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
+	node->key = key;
+	node->left = node->right = NULL; //ìƒì„±ë˜ëŠ” ë…¸ë“œëŠ” ë‹¨ë§ë…¸ë“œì´ë‹¤
+
+	return node;
+}
+
+//ë…¸ë“œ ì‚½ì… í•¨ìˆ˜
+TreeNode* insert(TreeNode* node, int key) {
+	if (node == NULL) {
+		return createNode(key);
+	}
+
+	if (key < node->key) {
+		node->left = insert(node->left, key);
+	}
+	else if (key > node->key) {
+		node->right = insert(node->right, key);
+	}
+	else {
+		return node;
+	}
+	return node;
+}
+
+//ì „ìœ„ ìˆœíšŒ í•¨ìˆ˜
+void preOrder(TreeNode* root) {
+	if (root != NULL) {
+		printf("[%d] ", root->key);
+		preOrder(root->left);
+		preOrder(root->right);
+	}
+}
+
+//ì¤‘ìœ„ ìˆœíšŒ í•¨ìˆ˜
+void inOrder(TreeNode* root) {
+	if (root != NULL) {
+		inOrder(root->left);
+		printf("[%d] ", root->key);
+		inOrder(root->right);
+	}
+}
+
+//ì´ì§„ íƒìƒ‰ í•¨ìˆ˜
+TreeNode* searchNode(TreeNode* node, int key) {
+	
+	if (node == NULL) { //íƒìƒ‰ì— ì‹¤íŒ¨í•˜ëŠ” ê²½ìš°
+		return NULL;
+	}
+
+
+	if (key == node->key) { //íƒìƒ‰ì— ì„±ê³µí•˜ëŠ” ê²½ìš°
+		return node;
+	}
+	else if (key > node->key) { //ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¡œ ì´ë™
+		return searchNode(node->right, key);
+	}
+	else { //ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ë¡œ ì´ë™
+		return searchNode(node->left, key);
+	}
+}
+
+int main(void) {
+	TreeNode* root = NULL;
+
+	root = insert(root, 35);
+	root = insert(root, 68);
+	root = insert(root, 35);
+	//inOrder(root); printf("\n"); getchar(); //ì „ìœ„ìˆœíšŒ
+
+	root = insert(root, 22);
+	root = insert(root, 17);
+	root = insert(root, 55);
+	//inOrder(root); printf("\n"); getchar(); //ì „ìœ„ìˆœíšŒ
+
+	root = insert(root, 30);
+	root = insert(root, 34);
+	root = insert(root, 65);
+	inOrder(root); printf("\n"); getchar(); //ì „ìœ„ìˆœíšŒ
+
+	//ì´ì§„íƒìƒ‰
+	if (searchNode(root, 30)) {
+		printf("found\n");
+	}
+	else {
+		printf("not found\n");
+	}
+}
